@@ -4,12 +4,13 @@ build-backend = "hatchling.build"
 
 [project]
 name = "qiskit-qaoa-knapsack-domi"
-version = "0.3.1"
+version = "0.4.0"
 description = "0/1 knapsack via digitized quantum annealing on IBM Quantum hardware"
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "MIT" }
-authors = [{ name = "Domi" }]
+license = "PolyForm-Noncommercial-1.0.0"
+license-files = ["LICENSE"]
+authors = [{ name = "Dominika Pillerová" }]
 keywords = [
     "qiskit",
     "quantum",
@@ -23,7 +24,6 @@ keywords = [
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -66,7 +66,7 @@ qiskit-qaoa-knapsack-domi = "qiskit_qaoa_knapsack_domi.cli:main"
 packages = ["src/qiskit_qaoa_knapsack_domi"]
 
 [tool.hatch.build.targets.sdist]
-include = ["src", "tests", "examples", "README.md", "LICENSE"]
+include = ["src", "tests", "examples", "docs", "README.md", "LICENSE"]
 
 [tool.ruff]
 line-length = 100

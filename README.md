@@ -391,4 +391,23 @@ ruff check src tests examples
 
 ## License
 
-MIT
+[PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0)
+
+> Required Notice: Copyright Dominika Pillerová (https://myerp.cz) 2026
+
+**Noncommercial use only.** Research, experiment, teaching, personal study and
+hobby projects are permitted purposes, as is use by charitable organizations,
+educational institutions, public research organizations and government
+institutions — regardless of how they are funded. Commercial use is not covered;
+contact the licensor for a separate license.
+
+This is a source-available licence, not an open-source one — it is not OSI
+approved, so the package carries no `License :: OSI Approved` classifier.
+
+The licence grants a **patent license** for claims the licensor can license and
+that you would infringe by using the software, and it terminates that patent
+license if you assert a patent claim against the software.
+
+If you redistribute any part of this package, you must pass on both the licence
+terms (or the URL above) and the `Required Notice:` line. Both ship inside the
+wheel at `qiskit_qaoa_knapsack_domi-<version>.dist-info/licenses/LICENSE`.
