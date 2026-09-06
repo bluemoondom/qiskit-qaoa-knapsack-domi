@@ -1,5 +1,7 @@
 # qiskit-qaoa-knapsack-domi
 
+I also recommend reading the file theory.md
+
 Solving the 0/1 knapsack problem by **digitized quantum annealing** on IBM
 Quantum hardware. There is no classical optimizer — the cost function
 parameters are found in advance by statevector-simulating the very circuit that
