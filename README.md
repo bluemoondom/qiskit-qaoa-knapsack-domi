@@ -1,7 +1,5 @@
 # qiskit-qaoa-knapsack-domi
 
-I also recommend reading the file theory.md
-
 Solving the 0/1 knapsack problem by **digitized quantum annealing** on IBM
 Quantum hardware. There is no classical optimizer — the cost function
 parameters are found in advance by statevector-simulating the very circuit that
@@ -10,6 +8,28 @@ will then run.
 Only `values`, `weights` and `capacity` are passed into the module. **N is
 derived from their count**, and the rest of the parameters (ALPHA, LAM1, LAM2,
 STEPS, T, recommended SHOTS) are determined by `tune_penalties()`.
+
+> **Read [docs/theory.md](docs/theory.md) before tuning anything by hand.**
+> The parameters are not independent. `LAM1` and `LAM2` reshape the energy
+> landscape and, through the normalization, also change how much of the
+> evolution a given `T` performs — so they cannot be set separately from
+> `STEPS` and `T`. And which `prune_keep` values are safe depends on `LAM1`
+> and `LAM2` in turn: measured sweeps show one instance collapsing across a
+> wide band around 0.7 that another passes straight through. The theory notes
+> derive these relations and give the measured tables.
+
+## Documentation
+
+- **[docs/theory.md](docs/theory.md)** — how the knapsack becomes a QUBO, then an
+  Ising Hamiltonian, then a digitized annealing circuit; coupler pruning and its
+  cost; and what the Lagrange multipliers `LAM1` and `LAM2` actually do
+  (shadow price, effective capacity, the three failure modes); plus a purely
+  mathematical account of what `tune_penalties()` computes in preprocessing.
+- **[docs/example_output.md](docs/example_output.md)** — a complete run on
+  `ibm_kingston`: job monitoring, time breakdown and the result summary.
+
+The theory notes contain a lot of LaTeX, which GitHub renders but PyPI does not
+— that is why they live in `docs/` rather than in this file.
 
 ## Installation
 
@@ -276,7 +296,7 @@ name without the digit.
 
 ## Pruning the couplings
 
-`PRUNE_KEEP` is the main lever on circuit depth — weak couplings cost just as
+`prune_keep` is the main lever on circuit depth — weak couplings cost just as
 many two-qubit gates as strong ones. It can also be called on its own:
 
 ```python
@@ -285,6 +305,18 @@ from qiskit_qaoa_knapsack_domi import prune_couplings
 quad = prune_couplings(raw_couplings, prune_keep=0.5)
 # ZZ gates: stayed 53/105 (50%)
 ```
+
+Pruning is not only a compromise. On the reference instance `prune_keep=0.5`
+samples the optimum **four times more strongly** than the complete model, while
+using half the RZZ and therefore decohering less on hardware.
+
+**Use 1.0 or 0.5; below that, verify.** Measured on three instances, `0.5` is at
+least as good as `1.0` everywhere and uses half the RZZ. Lower values are not
+safe to extrapolate to: quality degrades below roughly 0.3–0.4 on every instance
+tested, and one instance collapses across a wide band around 0.7 that another
+sails straight through. Which values misbehave depends on `LAM1` and `LAM2`, so
+the three have to be judged together. The sweeps are in
+[docs/theory.md](docs/theory.md).
 
 ## Plots
 
@@ -356,3 +388,7 @@ pip install -e ".[dev]"
 pytest -q
 ruff check src tests examples
 ```
+
+## License
+
+MIT
