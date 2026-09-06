@@ -468,3 +468,4 @@ Target values: $\lambda_1/\alpha$ on the order of the LP dual,
 $\max|J|/\max|h|$ ideally above 0.3, and `P(feasible)` at least 30 % in the
 measured data. This run **does not meet** the last two — both are a consequence
 of the pruning and the shallow schedule.
+
