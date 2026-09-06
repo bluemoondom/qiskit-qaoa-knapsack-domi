@@ -391,6 +391,10 @@ ruff check src tests examples
 
 ## License
 
+[PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0)
+
+> Required Notice: Copyright Dominika Pillerová (https://myerp.cz) 2026
+
 **Noncommercial use only.** Research, experiment, teaching, personal study and
 hobby projects are permitted purposes, as is use by charitable organizations,
 educational institutions, public research organizations and government
@@ -407,3 +411,20 @@ license if you assert a patent claim against the software.
 If you redistribute any part of this package, you must pass on both the licence
 terms (or the URL above) and the `Required Notice:` line. Both ship inside the
 wheel at `qiskit_qaoa_knapsack_domi-<version>.dist-info/licenses/LICENSE`.
+
+---
+
+## Results on real hardware
+
+![Sampled bitstrings on ibm_kingston](https://qiskit.fr/logistics/qubo1.jpg)
+
+![Tail distribution against uniform random sampling](https://qiskit.fr/logistics/qubo2.jpg)
+
+Both plots come from an actual `ibm_kingston` run of the reference instance —
+not a simulator. Red is the optimum, blue is everything within 10 % of it, and
+the gap between the two curves in the second plot is the whole point of the
+exercise.
+
+Run it yourself and your own optimum will be waiting in `outputs/`, sampled off
+real superconducting qubits. It even beat the DP solver to the answer — well,
+"beat" in the sense of arriving at the same 272 rather more expensively.
