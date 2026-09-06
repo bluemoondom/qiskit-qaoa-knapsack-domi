@@ -391,10 +391,6 @@ ruff check src tests examples
 
 ## License
 
-[PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0)
-
-> Required Notice: Copyright Dominika Pillerová (https://myerp.cz) 2026
-
 **Noncommercial use only.** Research, experiment, teaching, personal study and
 hobby projects are permitted purposes, as is use by charitable organizations,
 educational institutions, public research organizations and government
