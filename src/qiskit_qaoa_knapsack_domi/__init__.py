@@ -56,7 +56,7 @@ from .runner import monitor_job, run_circuit
 from .transpiling import TranspileResult, mapomatic_candidate, seed_scan, transpile_best
 from .tuning import lp_dual, tune_penalties
 
-__version__ = "0.4.1"
+__version__ = "0.4.2"
 
 __all__ = [
     "__version__",

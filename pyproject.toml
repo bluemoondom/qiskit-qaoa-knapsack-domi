@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "qiskit-qaoa-knapsack-domi"
-version = "0.4.1"
+version = "0.4.2"
 description = "0/1 knapsack via digitized quantum annealing on IBM Quantum hardware"
 readme = "README.md"
 requires-python = ">=3.10"
