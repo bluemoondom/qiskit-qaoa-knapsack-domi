@@ -1,0 +1,80 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "qiskit-qaoa-knapsack-domi"
+version = "0.3.1"
+description = "0/1 knapsack via digitized quantum annealing on IBM Quantum hardware"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Domi" }]
+keywords = [
+    "qiskit",
+    "quantum",
+    "qaoa",
+    "quantum-annealing",
+    "knapsack",
+    "optimization",
+    "qubo",
+    "ising",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Typing :: Typed",
+]
+dependencies = [
+    "numpy>=1.24",
+    "qiskit>=1.2",
+    "qiskit-ibm-runtime>=0.30",
+]
+
+[project.optional-dependencies]
+plots = ["matplotlib>=3.7", "pylatexenc>=2.10"]
+mapomatic = ["mapomatic>=0.10"]
+dev = [
+    "pytest>=7.4",
+    "ruff>=0.5",
+    "build>=1.0",
+    "twine>=5.0",
+    "matplotlib>=3.7",
+    "pylatexenc>=2.10",
+]
+all = [
+    "matplotlib>=3.7",
+    "pylatexenc>=2.10",
+    "mapomatic>=0.10",
+]
+
+[project.urls]
+Homepage = "https://github.com/domi/qiskit-qaoa-knapsack-domi"
+Issues = "https://github.com/domi/qiskit-qaoa-knapsack-domi/issues"
+
+[project.scripts]
+qiskit-qaoa-knapsack-domi = "qiskit_qaoa_knapsack_domi.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/qiskit_qaoa_knapsack_domi"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "examples", "README.md", "LICENSE"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501", "B008", "E741"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
